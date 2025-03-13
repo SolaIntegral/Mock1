@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <link rel="icon" href="logo1.png" type="image/x-icon">
+    <link rel="shortcut icon" href="logo1.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sola</title>
+</head>
+<body>
+    <div class="container">
+        <h2>健康管理アプリ</h2>
+        <p style="text-align: center; color: #666;">あなたの健康をサポートするアプリです。</p>
+
+        <div class="menu-grid">
+            <button class="menu-button" onclick="location.href='healthcheck.html'">
+                <span class="menu-icon">🏥</span>
+                <span>ヘルスチェック</span>
+            </button>
+            <button class="menu-button" onclick="location.href='point.html'">
+                <span class="menu-icon">💰</span>
+                <span>ポイント管理</span>
+            </button>
+            <button class="menu-button" onclick="location.href='reports.html'">
+                <span class="menu-icon">🏃‍♂️</span>
+                <span>運動記録</span>
+            </button>
+            <button class="menu-button" onclick="location.href='walking.html'">
+                <span class="menu-icon">🚶‍♂️</span>
+                <span>ウォーキングラリー</span>
+            </button>
+        </div>
+    </div>
+
+    <div id="nav"></div>
+    <script src="script.js"></script>
+</body>
+</html>

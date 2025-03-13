@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <link rel="icon" href="logo1.png" type="image/x-icon">
+    <link rel="shortcut icon" href="logo1.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHOWCASE</title>
+</head>
+<body>
+    <div class="container">
+        <h2>軽井沢ウォーキングラリー</h2>
+
+        <div class="card">
+            <p><strong>現在地</strong></p>
+            <p style="font-size: 22px; color: #06C755; font-weight: bold;">📍 軽井沢駅</p>
+        </div>
+
+        <div class="card">
+            <p><strong>マップ</strong></p>
+            <div id="map" style="width: 100%; height: 300px; background: #ddd;"></div>
+        </div>
+
+        <div class="card">
+            <p><strong>目的地リスト</strong></p>
+            <button class="visit-button" data-place="旧軽井沢銀座">🛍️ 旧軽井沢銀座</button>
+            <button class="visit-button" data-place="雲場池">🏞️ 雲場池</button>
+            <button class="visit-button" data-place="軽井沢プリンスショッピングプラザ">🛒 軽井沢プリンスショッピングプラザ</button>
+        </div>
+    </div>
+
+    <div id="nav"></div>
+    <script src="script.js"></script>
+</body>
+
+
+</html>
