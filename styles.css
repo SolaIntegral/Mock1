@@ -292,3 +292,13 @@ button:hover {
 #close-modal:hover {
     background: #bbb;
 }
+
+/* キャンセルボタン */
+#close-payment-modal {
+    background: #ddd;
+    color: black;
+}
+
+#close-payment-modal:hover {
+    background: #bbb;
+}

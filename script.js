@@ -9,29 +9,34 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(error => console.error("ナビゲーションの読み込みに失敗:", error));
     }
 });
-document.addEventListener("DOMContentLoaded", function () {
-    console.log("スクリプトがロードされました");
 
+document.addEventListener("DOMContentLoaded", function () {
     const reserveButton = document.getElementById("reserve-button");
     const reserveModal = document.getElementById("reserve-modal");
     const closeModal = document.getElementById("close-modal");
     const confirmReserve = document.getElementById("confirm-reserve");
     const venueSelect = document.getElementById("venue-select");
     const nextActionText = document.getElementById("next-action");
+    const ticketModal = document.getElementById("ticket-modal");
+    const closeTicketModal = document.getElementById("close-ticket-modal");
+    const buyTicket = document.getElementById("buy-ticket");
+    const paymentModal = document.getElementById("payment-modal");
+    const closePaymentModal = document.getElementById("close-payment-modal");
+    const confirmPayment = document.getElementById("confirm-payment");
 
-    console.log("reserveButton:", reserveButton);
-    console.log("reserveModal:", reserveModal);
-    console.log("closeModal:", closeModal);
-    console.log("confirmReserve:", confirmReserve);
+    let step = 1; // 現在のステップ
 
-    if (!reserveButton || !reserveModal || !closeModal || !confirmReserve || !venueSelect) {
-        console.error("一部の要素が取得できませんでした。");
-        return;
-    }
-
-    // 予約ボタンを押した時にポップアップを開く
+    // 予約ボタンを押した時にポップアップを開く（最初のアクション）
     reserveButton.addEventListener("click", function () {
-        reserveModal.style.display = "block";
+        if (step === 1) {
+            reserveModal.style.display = "block";
+        } else if (step === 2) {
+            nextActionText.textContent = "健診結果は確認しましたか？";
+            reserveButton.textContent = "確認しました";
+            step++;
+        } else if (step === 3) {
+            ticketModal.style.display = "block";
+        }
     });
 
     // キャンセルボタンでモーダルを閉じる
@@ -46,7 +51,31 @@ document.addEventListener("DOMContentLoaded", function () {
         if (confirm(`「${selectedVenue}」を予約しますか？`)) {
             alert("予約が完了しました！");
             reserveModal.style.display = "none";
-            nextActionText.textContent = "予約が完了しました！";
+            nextActionText.textContent = "健康診断に行きましたか？";
+            reserveButton.textContent = "行きました";
+            step++; // ステップを進める
         }
+    });
+
+    // チケットモーダルのキャンセル
+    closeTicketModal.addEventListener("click", function () {
+        ticketModal.style.display = "none";
+    });
+
+    // 「購入」ボタンを押すと支払いモーダルを開く
+    buyTicket.addEventListener("click", function () {
+        ticketModal.style.display = "none";
+        paymentModal.style.display = "block";
+    });
+
+    // 支払いモーダルのキャンセル
+    closePaymentModal.addEventListener("click", function () {
+        paymentModal.style.display = "none";
+    });
+
+    // 支払い完了
+    confirmPayment.addEventListener("click", function () {
+        alert("購入が完了しました！");
+        paymentModal.style.display = "none";
     });
 });

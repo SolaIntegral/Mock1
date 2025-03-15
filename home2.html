@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <link rel="icon" href="logo1.png" type="image/x-icon">
+    <link rel="shortcut icon" href="logo1.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overview</title>
+</head>
+<body>
+        <div class="container">
+        <div class="header">
+            <h2>ホーム</h2>
+            <div class="notification">
+                <i class="fas fa-envelope"></i>
+                <span class="badge" id="notification-badge">3</span>
+            </div>
+        </div>
+
+        <div class="card large-card">
+            <h3>次の行動</h3>
+            <p id="next-action">健康診断を予約しましょう！</p>
+            <button id="reserve-button" style="background: white; color: #059a44;">予約はこちら</button>
+
+        </div>
+
+        <button id="about-action">自分について</button>
+
+         <!-- モーダル: 会場選択 -->
+    <div id="reserve-modal" class="modal">
+        <div class="modal-content">
+            <h3>会場を選択してください</h3>
+            <select id="venue-select">
+                <option value="東京クリニック">○○クリニック</option>
+                <option value="大阪メディカル">軽井沢病院</option>
+                <option value="名古屋病院">木もれ陽の里</option>
+            </select>
+            <button id="confirm-reserve">予約する</button>
+            <button id="close-modal">キャンセル</button>
+        </div>
+    </div>
+
+    </div>
+    <div id="nav"></div>
+    
+    <script src="script.js"></script>
+</body>
+
+
+</html>
