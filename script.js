@@ -9,60 +9,44 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(error => console.error("ナビゲーションの読み込みに失敗:", error));
     }
 });
-
 document.addEventListener("DOMContentLoaded", function () {
-    // 運動量に応じたおすすめ情報
-    const exerciseSelect = document.getElementById("exercise-level");
-    const recommendationText = document.getElementById("recommendation");
+    console.log("スクリプトがロードされました");
 
-    if (exerciseSelect) {
-        exerciseSelect.addEventListener("change", function () {
-            const level = exerciseSelect.value;
-            if (level === "low") {
-                recommendationText.textContent = "ウォーキングを毎日20分始めてみましょう！";
-            } else if (level === "normal") {
-                recommendationText.textContent = "運動を継続しながら、定期的な健康診断を受けましょう！";
-            } else if (level === "high") {
-                recommendationText.textContent = "運動量は素晴らしいです！適切な栄養補給も忘れずに。";
-            }
-        });
+    const reserveButton = document.getElementById("reserve-button");
+    const reserveModal = document.getElementById("reserve-modal");
+    const closeModal = document.getElementById("close-modal");
+    const confirmReserve = document.getElementById("confirm-reserve");
+    const venueSelect = document.getElementById("venue-select");
+    const nextActionText = document.getElementById("next-action");
+
+    console.log("reserveButton:", reserveButton);
+    console.log("reserveModal:", reserveModal);
+    console.log("closeModal:", closeModal);
+    console.log("confirmReserve:", confirmReserve);
+
+    if (!reserveButton || !reserveModal || !closeModal || !confirmReserve || !venueSelect) {
+        console.error("一部の要素が取得できませんでした。");
+        return;
     }
-});
-document.addEventListener("DOMContentLoaded", function () {
-    const useCouponButton = document.getElementById("use-coupon");
-    const couponContainer = document.getElementById("coupon-container");
 
-    if (useCouponButton) {
-        useCouponButton.addEventListener("click", function () {
-            if (confirm("このクーポンを使用しますか？")) {
-                couponContainer.innerHTML = "<p>✅ クーポン使用済み</p>";
-            }
-        });
-    }
-});
-document.addEventListener("DOMContentLoaded", function () {
-    const convertButton = document.getElementById("convert-points");
-    const stepsDisplay = document.getElementById("steps");
-    const convertedPointsDisplay = document.getElementById("converted-points");
+    // 予約ボタンを押した時にポップアップを開く
+    reserveButton.addEventListener("click", function () {
+        reserveModal.style.display = "block";
+    });
 
-    if (convertButton) {
-        convertButton.addEventListener("click", function () {
-            let steps = parseInt(stepsDisplay.textContent);
-            let points = Math.floor(steps / 100);
-            stepsDisplay.textContent = "0 歩"; // 変換後、歩数リセット
-            convertedPointsDisplay.textContent = `変換後のポイント: ${points} pt`;
-        });
-    }
-});
-document.addEventListener("DOMContentLoaded", function () {
-    const visitButtons = document.querySelectorAll(".visit-button");
+    // キャンセルボタンでモーダルを閉じる
+    closeModal.addEventListener("click", function () {
+        reserveModal.style.display = "none";
+    });
 
-    visitButtons.forEach(button => {
-        button.addEventListener("click", function () {
-            if (confirm(`${this.dataset.place} に到着しましたか？`)) {
-                this.textContent = `✅ ${this.dataset.place} (訪問済み)`;
-                this.disabled = true;
-            }
-        });
+    // 予約を確定する
+    confirmReserve.addEventListener("click", function () {
+        const selectedVenue = venueSelect.value;
+
+        if (confirm(`「${selectedVenue}」を予約しますか？`)) {
+            alert("予約が完了しました！");
+            reserveModal.style.display = "none";
+            nextActionText.textContent = "予約が完了しました！";
+        }
     });
 });

@@ -11,30 +11,43 @@
 </head>
 <body>
     <div class="container">
-        <h2>健康管理アプリ</h2>
-        <p style="text-align: center; color: #666;">あなたの健康をサポートするアプリです。</p>
-
-        <div class="menu-grid">
-            <button class="menu-button" onclick="location.href='healthcheck.html'">
-                <span class="menu-icon">🏥</span>
-                <span>ヘルスチェック</span>
-            </button>
-            <button class="menu-button" onclick="location.href='point.html'">
-                <span class="menu-icon">💰</span>
-                <span>ポイント管理</span>
-            </button>
-            <button class="menu-button" onclick="location.href='reports.html'">
-                <span class="menu-icon">🏃‍♂️</span>
-                <span>運動記録</span>
-            </button>
-            <button class="menu-button" onclick="location.href='walking.html'">
-                <span class="menu-icon">🚶‍♂️</span>
-                <span>ウォーキングラリー</span>
-            </button>
-        </div>
+        <h2>あなたに関する質問</h2>
+        <form id="questionForm">
+            <div class="card">
+                <label for="q1">1. 退職後もしくは60歳になったときに、どんなことをしたいか？</label>
+                <input type="text" id="q1" name="q1" required class="input-field">
+            </div>
+            <div class="card">
+                <label for="q2">2. そのときにどんな人と一緒にいたいか?</label>
+                <input type="text" id="q2" name="q2" required class="input-field">
+            </div>
+            <div class="card">
+                <label for="q3">3. その人とどんなことをしたいか？</label>
+                <input type="text" id="q3" name="q3" required class="input-field">
+            </div>
+            <div class="card">
+                
+                <input type="text" id="q4" name="q4" required class="input-field">
+                <label for="q4">という理由で</label>
+            </div>
+            <div class="card">
+                <label for="q5">健康診断を</label>
+                <select id="q5" name="q5" required class="input-field">
+                    <option value="">選択してください</option>
+                    <option value="オンライン診療">受診する</option>
+                    <option value="対面診療">受診しない</option>
+                </select>
+            </div>
+            <button type="submit">送信</button>
+        </form>
     </div>
+    <script>
+        document.getElementById('questionForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            window.location.href = 'home.html';
+        });
+    </script>
 
-    <div id="nav"></div>
     <script src="script.js"></script>
 </body>
 </html>
